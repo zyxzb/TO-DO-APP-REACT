@@ -1,25 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import React, {useState} from 'react';
+import Form from './components/Form';
+import ToDoList from './components/ToDoList';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    const [task,
+        setTask] = useState('');
+    const [tasksToDo,
+        setTasksToDo] = useState([]);
+    // add more funcionality later - filtering based on "complited" status const
+    // [status, setStatus] = useState('All');
+
+    return (
+        <div className="App">
+            <header>
+                <h1>TO-DO APP</h1>
+                <Form
+                    task={task}
+                    setTask={setTask}
+                    tasksToDo={tasksToDo}
+                    setTasksToDo={setTasksToDo}/>
+                <ToDoList tasksToDo={tasksToDo} setTasksToDo={setTasksToDo}/>
+            </header>
+        </div>
+    );
 }
 
 export default App;
